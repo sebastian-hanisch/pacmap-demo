@@ -257,9 +257,9 @@ def _render(current_step, iteration=None):
         with view_slot.container():
             c1, c2 = st.columns([2, 3])
             c1.markdown(f"**Einbettung nach Iteration {it}**")
-            c1.plotly_chart(build_embedding(model.snapshots[it], z_color, "Koordinate 1", "Koordinate 2"), width="stretch", key="pacmap_snapshot")
+            c1.plotly_chart(build_embedding(model.snapshots[it], z_color, "Koordinate 1", "Koordinate 2"), width="stretch", key=f"pacmap_snapshot_{it}")
             c2.markdown("**Optimierung**")
-            c2.plotly_chart(build_optimization(model.losses, dict(r2_points), analysis.snapshot_far, model.iters, marker=it), width="stretch", key="pacmap_optimization")
+            c2.plotly_chart(build_optimization(model.losses, dict(r2_points), analysis.snapshot_far, model.iters, marker=it), width="stretch", key=f"pacmap_optimization_{it}")
     else:
         with view_slot.container():
             c1, c2 = st.columns(2)
