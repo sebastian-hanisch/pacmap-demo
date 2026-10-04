@@ -12,7 +12,7 @@ per Test gegen dessen Ausgabe eingefroren), erzeugt aus wenigen versteckten Fakt
 Daten stimmt – **das Ergebnis ist überwiegend negativ**. PaCMAP hat außerdem weniger Verbreitung als UMAP und keinen etablierten Standard-Status.
 ```
 pca-demo → isomap-demo | lle-demo | tsne-demo → umap-demo → pacmap-demo    (Kette t-SNE → UMAP → PaCMAP)
-pacmap-demo → Autoencoder   (Stück der Linie, noch nicht gebaut)
+pca-demo → autoencoder-demo   (unabhängiger Ast, Stück 7 der Linie, gebaut)
 ```
 
 | Versprechen / Frage | Ergebnis (300 Touren, 4 feste Datensätze, wenn nicht anders angegeben) |
@@ -130,6 +130,4 @@ pytest tests/ -v
 
 ---
 
-Teil des [Operations-Research-Demo-Portfolios](https://sebastianhanisch.net/demos.html) von
-[Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
-Interesse an einer maßgeschneiderten Lösung? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Dimensionsreduktion: von PCA bis Autoencoder](https://sebastianhanisch.net/konzepte-dimensionsreduktion.html).
