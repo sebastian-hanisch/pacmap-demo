@@ -401,7 +401,7 @@ st.markdown(
 | **Extreme (Sonderfahrten) erhalten** | ❌ 5 %: R² **0.30** (UMAP 0.36, t-SNE 0.35, PCA 0.67, Isomap 0.77) - dieselbe Schwäche |
 | **Mittlere Paare sind nötig für globale Ordnung** (Mechanismus) | ✅ ohne MN-Paare: ferne Paare **0.06** statt 0.33 (3 Seeds) |
 | **Geschwindigkeit** | ✅ am schnellsten: n = 600: **0.5 s** gegen UMAP 1.7 s und t-SNE 5.1 s (auch bei n = 100–200 mindestens gleichauf) |
-| **Stabilität** (Start egal) | ⚠️ zwischen t-SNE und UMAP: mittlere paarweise Abweichung zufälliger Starts (200 Touren, 4 Datensätze) bei q = 2: PaCMAP 0.10–0.43, UMAP 0.01–0.22, t-SNE 0.37–0.53; bei q = 3 gemischt |
+| **Stabilität** (Start egal) | ⚠️ zwischen t-SNE und UMAP: Median der paarweisen Abweichungen zufälliger Starts (200 Touren, 4 Datensätze) bei q = 2: PaCMAP 0.10–0.43, UMAP 0.01–0.22, t-SNE 0.37–0.53; bei q = 3 gemischt |
 | **Neue Touren einbetten** | ⚠️ nur als Behelf: R² 0.79–0.91 (wie `PaCMAP.transform`), UMAP `transform` 0.88–0.93; beim Neu-Rechnen verschieben sich die Trainings-Touren um Procrustes 0.06–0.56 |
 
 Die Experimente mit Knopf unten prüfen Stabilität, Out-of-sample und Rechenzeit für Ihre Einstellungen nach.
@@ -454,7 +454,7 @@ if st.session_state.get("oos_on"):
 
 st.markdown("**🔀 Stabilität: PaCMAP, UMAP und t-SNE auf denselben Datensätzen**")
 st.caption(
-    "Wie stark hängt das Bild vom zufälligen Start ab? Je Datensatz vier zufällige Starts; gemessen wird der **mittlere paarweise Procrustes-Abstand** (nach bester Drehung/Spiegelung; 0 = gleiches Bild, 1 = unabhängig) - "
+    "Wie stark hängt das Bild vom zufälligen Start ab? Je Datensatz vier zufällige Starts; gemessen wird der **Median der sechs paarweisen Procrustes-Abstände** (nach bester Drehung/Spiegelung; 0 = gleiches Bild, 1 = unabhängig) - "
     "für alle drei Verfahren auf denselben vier festen Datensätzen mit 200 Touren und Ihren Datenreglern (q, Krümmung, Rauschen, Sonderfahrten); PaCMAP mit Ihren Einstellungen, UMAP und t-SNE mit ihren Standards. Dauert etwa 20 Sekunden."
 )
 if st.button("🔀 Stabilität vergleichen", key="stability_start"):
@@ -464,7 +464,7 @@ if st.session_state.get("stability_on"):
         stab = _stability(int(q), float(curvature), float(noise), int(outlier_pct), settings)
     st.plotly_chart(build_stability_compare(stab), width="stretch", key="stability_plot")
     st.caption(
-        f"Mittlere paarweise Abstände (PaCMAP / UMAP / t-SNE) je Datensatz: " + "; ".join(f"{r['pacmap']:.2f} / {r['umap']:.2f} / {r['tsne']:.2f}" for r in stab)
+        f"Median der paarweisen Abstände (PaCMAP / UMAP / t-SNE) je Datensatz: " + "; ".join(f"{r['pacmap']:.2f} / {r['umap']:.2f} / {r['tsne']:.2f}" for r in stab)
         + f". Über die vier Datensätze im Mittel: PaCMAP {np.mean([r['pacmap'] for r in stab]):.2f}, UMAP {np.mean([r['umap'] for r in stab]):.2f}, t-SNE {np.mean([r['tsne'] for r in stab]):.2f}."
     )
 

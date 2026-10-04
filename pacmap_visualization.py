@@ -132,7 +132,7 @@ def build_distance_fidelity(latent_pairs, panels):
 
 
 def build_stability_compare(rows):
-    """Mittlere paarweise Procrustes-Abstände zufälliger Starts je Datensatz für PaCMAP, UMAP und t-SNE (niedriger = stabiler)."""
+    """Median der paarweisen Procrustes-Abstände zufälliger Starts je Datensatz für PaCMAP, UMAP und t-SNE (niedriger = stabiler)."""
     labels = [f"Datensatz {i + 1}" for i in range(len(rows))]
     fig = go.Figure()
     for key, name, color in (("pacmap", "PaCMAP", ORANGE), ("umap", "UMAP", PURPLE), ("tsne", "t-SNE", RED)):

@@ -21,7 +21,7 @@ pca-demo → autoencoder-demo   (unabhängiger Ast, Stück 7 der Linie, gebaut)
 | Extreme (Sonderfahrten) erhalten | ❌ 5 %: R² **0.30** (UMAP 0.36, t-SNE 0.35, PCA 0.67, Isomap 0.77) – dieselbe Schwäche |
 | Mittlere Paare ordnen die globale Struktur (Mechanismus) | ✅ ohne MN-Paare: ferne Paare **0.06** statt 0.33 (3 Datensätze) |
 | Geschwindigkeit | ✅ am schnellsten: n = 600 **0.4–0.5 s** gegen UMAP 1.3–1.7 s und t-SNE 4.9–5.1 s; auch bei n = 100–200 mindestens gleichauf |
-| Stabilität (Start egal) | ⚠️ zwischen t-SNE und UMAP (200 Touren, q = 2, mittlere paarweise Abweichung zufälliger Starts): PaCMAP 0.10–0.43, UMAP 0.01–0.22, t-SNE 0.37–0.53; bei q = 3 gemischt |
+| Stabilität (Start egal) | ⚠️ zwischen t-SNE und UMAP (200 Touren, q = 2, Median der paarweisen Abweichungen zufälliger Starts): PaCMAP 0.10–0.43, UMAP 0.01–0.22, t-SNE 0.37–0.53; bei q = 3 gemischt |
 | Neue Touren einbetten | ⚠️ nur als Behelf: R² 0.79–0.91, UMAP `transform` 0.88–0.93; beim Neu-Rechnen verschieben sich die Trainings-Touren um Procrustes 0.06–0.56 |
 
 ## Was die Demo zeigt
