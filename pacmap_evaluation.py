@@ -234,7 +234,8 @@ def out_of_sample(dataset, settings, fraction=C.HOLDOUT_FRACTION):
 
     def r2_new(train_emb, y):
         beta, *_ = np.linalg.lstsq(_quad_features(train_emb), dataset.z[train], rcond=None)
-        return float(1 - (z_test - _quad_features(y) @ beta).var(0).sum() / z_test.var(0).sum())
+        resid = z_test - _quad_features(y) @ beta                                                          # nicht zentrieren: ein konstanter Versatz der Vorhersage zählt als Fehler
+        return float(1 - (resid ** 2).sum() / ((z_test - z_test.mean(0)) ** 2).sum())
     pac_train = run_pacmap(dataset.X[train], settings)
     y_pac = transform(pac_train, dataset.X[test])
     pac_full = run_pacmap(dataset.X, settings)

@@ -65,7 +65,7 @@ q = 3: 0.51 / 0.16 / 0.58, 0.37 / 0.35 / 0.76, 0.10 / 0.05 / 0.68, 0.80 / 0.25 /
 **Paar-Ziehung** beeinflusst das Ergebnis: bei PCA-Start und zwei verschiedenen Paar-Seeds lag der Procrustes-Abstand bei q = 2 zwischen 0.11 und 0.33, bei q = 3 zwischen 0.05 und 0.70.
 
 **Out-of-sample** (letzte 20 % zurückgehalten, 4 feste Seeds): Behelf-`transform` R² 0.79 / 0.91 / 0.84 / 0.82, die offizielle `PaCMAP.transform` 0.81 / 0.93 / 0.58 / 0.81, UMAP `transform` 0.88 / 0.93 / 0.88 / 0.93, t-SNE-Näherung
-0.79 / 0.69 / 0.74 / 0.85; Verschiebung der Trainings-Touren beim Neu-Rechnen (PaCMAP) 0.06 / 0.20 / 0.56 / 0.47. Die Referenz weist selbst darauf hin, dass `transform` neue Punkte wie einen zusätzlichen Datensatz behandelt.
+0.77 / 0.67 / 0.72 / 0.85; Verschiebung der Trainings-Touren beim Neu-Rechnen (PaCMAP) 0.06 / 0.20 / 0.56 / 0.47. Die Referenz weist selbst darauf hin, dass `transform` neue Punkte wie einen zusätzlichen Datensatz behandelt.
 
 **Rechenzeit** (lokale Messung, Standard-Einstellungen, ein Lauf je n; PaCMAP / UMAP / t-SNE): n = 100: 0.07 s / 0.33 s / 0.08 s; n = 200: 0.13 / 0.50 / 0.23–0.28; n = 400: 0.25 / 0.89–0.95 / 2.2–2.5; n = 600: **0.39–0.5 / 1.3–1.7 / 4.9–5.1**.
 
